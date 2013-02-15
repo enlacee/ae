@@ -1,0 +1,83 @@
+<html>
+<head>
+	<title>object js</title>
+</head>
+<body>
+<form name="frmLead" method="post" action="">
+	<span>nombre</span>
+	<input name ='nombre' value='pepe'/>
+	<br>
+	<span>phone</span>
+	<input name = 'telefono' value='125412541'/>
+
+	<br>
+	<input type='button' value='Cargar Datos' onclick='save()'/>
+
+</form>
+<script type="text/javascript">
+
+	Objlead = function(){
+		this.lms_ip ='',
+		this.lms_mediacode = '',
+		this.lms_gender = 'M',
+		this.lms_firstname = 'anibal',
+		this.lms_lastname = 'copitan',
+		this.lms_email ='',
+		this.lms_zipcode ='',
+		this.lms_phone ='',
+		this.lms_tracking='',
+		//set
+		this.setlms_ip = function(lms_ip){
+			this.lms_ip = lms_ip;
+		}
+		this.setlms_mediacode = function(lms_mediacode){
+			this.lms_mediacode = lms_mediacode;
+		}
+		this.setlms_gender = function(lms_gender){
+			this.lms_mediacode = lms_gender;
+		}
+		this.setlms_firstname = function(lms_firstname){
+			this.lms_firstname = lms_firstname;
+		}
+		this.setlms_lastname = function(lms_lastname){
+			this.lms_lastname = lms_lastname;
+		}
+		this.setlms_email = function(lms_email){
+			this.lms_email = lms_email;
+		}
+		this.setlms_zipcode = function(lms_zipcode){
+			this.lms_zipcode = lms_zipcode;
+		}
+		this.setlms_phone = function(lms_phone){
+			this.lms_phone = lms_phone;
+		}
+		this.setlms_tracking = function(lms_tracking){
+			this.lms_tracking = lms_tracking;
+		}
+	}
+// function
+
+	function save(){
+
+		var obj = new Objlead();
+		console.log(obj);
+
+		var form = document.frmLead;
+		var _name = form.nombre.value;
+		var _phone = form.telefono.value
+
+
+		console.log(name,phone);
+		obj.setlms_firstname(_name);
+		obj.setlms_phone(_phone);
+
+
+		console.log('new obj');
+		console.log(obj);
+
+
+	}
+
+</script>
+</body>
+</html>

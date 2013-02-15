@@ -1,0 +1,858 @@
+<html>
+<head>
+    <title>frm</title>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+    <title>frm</title>
+
+    <!--<link rel="stylesheet" href="css/smoothness/jquery-ui-1.10.0.custom.min.css" type="text/css" />-->
+    <script type="text/javascript" src="js/jquery-1.8.3.min.js" ></script>
+    <script type="text/javascript" src="js/tracking.js" ></script>
+    <!--<script type="text/javascript" src="js/jquery-ui-1.10.0.custom.min.js" ></script>-->
+<link rel="stylesheet" href="css/lead.css" type="text/css" />-
+
+<style type="text/css">
+.container{
+    width: 600px;
+    height: 500px;
+    border: 1px solid red;
+}
+.private{
+    border: 1px solid green;
+    background-color:#ddee33;
+}
+.hidden{
+    display: none;
+}
+.lista{
+    border:1px solid blue;
+    margin: 5px;
+    padding: 5px;
+}
+.mini-phone{
+	display:inline-block;
+	width:86px;
+	/*--------*/
+background: #fff;
+border: 1px solid #ccc;
+behavior: url(PIE.htc);
+border-radius: 5px;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+-ms-border-radius: 5px;
+-o-border-radius: 5px;
+display: inline-block;
+height: 28px;
+padding: 0 1%;
+line-height: 28px;
+margin: 0;
+
+}
+ul.menu-horizonal{
+    overflow: hidden;
+
+}
+
+ul.menu-horizonal li{
+    background-color: #C8F8FD;
+    float: left;
+    padding: 10px;
+    margin-left: 2px;
+
+}
+.close{
+    position: relative;;
+    float: right;
+    width: 50px;
+    background-color: black;
+    color: red;
+}
+
+</style>
+
+</head>
+<body onload="cargarPag(); cargar();">
+    <div id='temporal'></div>
+
+<div class ="quote">
+<nav>
+    <ul class='menu-horizonal'>
+        <li><a href="#vehicle">Vehicle</a> </li>
+        <li><a href="#driver">Driver</a> </li>
+        <li><a href="#coverage">Coverage</a></li>
+    </ul>
+</nav>
+
+
+
+    <form
+    action="http://www.freewaylms.com/desarrollo/controller/processor.php"
+    name ="frmLead" id="frmLead">
+
+
+
+        <div class="private">
+            <input name="lms_ip" id="lms_ip" value="ip123456"/>
+            <input name="lms_type" value="2"/><!-- Lead Complejos -->
+            <br>
+            <input name="lms_idpartner" id="lms_idpartner" value="partner0"/>
+            <input name="lms_datepartner" id="lms_datepartner" value="2013-01-01 15:56:01"/>
+            <br>
+            <input name="lms_media_code" id="lms_media_code" value="FWYTX-A-GO-LP-E-00001"/>
+            <br>tracking
+            <textarea name="lms_tracking" id="tracking_url"></textarea>
+
+        </div>
+
+
+        <div id="vehicle" class='hidden'>
+
+
+            <h2>VEHICLE</h2>
+            <hr>
+            <p>
+                <span>Add another vehicle?</span>
+                <input name="addvehicle" type ="radio"  value="1" checked />Yes
+                <input type ="radio" name="addvehicle" value="0" />No
+
+                <input type="button" class="button" value="NEXT" id="newVehicle" style="cursor: pointer;"
+                onclick='createVehicle(this)'/>
+            </p><!-- new vehicle -->
+            <hr>
+
+            <ul row = 'vehicle-1' class='lista'>
+                <h2>1</h2>
+                <!--<div class='close'>X</div>-->
+                <li>
+                    <span>Year</span>
+                    <select name="lms_vehicle_year-1" id="lms_vehicle_year-1" class="select">
+                        <option value="2012">2012</option>
+                        <option value="2013">2013</option>
+                    </select>
+                </li>
+
+                <li>
+                    <span>Make</span>
+                    <input type ="text" name="lms_vehicle_make-1" id="lms_vehicle_make-1" class="field"/>
+                </li>
+
+                <li>
+                    <span>Model</span>
+                    <input type ="text" name="lms_vehicle_model-1" id="lms_vehicle_model-1" class="field"/>
+                </li>
+
+                <li>
+                    <span>Sub Model</span>
+                    <input type ="text" name="lms_vehicle_submodel-1" id="lms_vehicle_submodel-1" class="field"/>
+                </li>
+
+                <li>
+                    <span>Vehicle Use</span>
+                    <select name="lms_vehicle_use-1" id="lms_vehicle_use-1" class="select" >
+                        <option value="commute">Commute</option>
+                        <option value="business">Business</option>
+                        <option value="pleasure">Pleasure</option>
+                        <option value="farming">Farming</option>
+
+                    </select>
+                </li>
+
+                <li>
+                    <span>Vehicle Mileage</span>
+                    <input type ="text" name="lms_vehicle_mileage-1" id="lms_vehicle_mileage-1" class="field"/>
+                </li>
+
+                <li>
+                    <span>Vehicle Status</span>
+                    <select name="lms_vehicle_status-1" id="lms_vehicle_status-1" class="select">
+                        <option value="owned">Owned</option>
+                        <option value="lease">Lease</option>
+                        <option value="financed">Financed</option>
+                    </select>
+
+                </li>
+
+            </ul>
+
+
+        </div><!--- vehicle -->
+
+
+
+
+
+        <div id = 'driver'>
+            <h2>DRIVER</h2>
+            <hr>
+            <p>
+                <span>Add another Driver?</span>
+                <input name="adddriver" type ="radio"  value="1" checked />Yes
+                <input type ="radio" name="adddriver" value="0" />No
+
+            <input type="button" class="button" value="NEXT" id="newDriver" style="cursor: pointer;"
+            onclick='createDriver(this)'/>
+            </p><!-- new vehicle -->
+            <hr>
+
+            <ul row = 'driver-1' class='lista'>
+                <h2>1</h2>
+                <li>
+                    <span>Relationship to Applicant</span>
+                    <select name="lms_driver_relationship-applicant"
+                    id="lms_driver_relationship-applicant" class="select">
+                        <option value="">Select...</option>
+                        <option selected="selected" value="Insured">Insured</option>
+                        <option value="Spouse">Spouse</option>
+                        <option value="Child">Child</option>
+                        <option value="Sibling">Sibling</option>
+                        <option value="Parent">Parent</option>
+                        <option value="Relative - other">Relative - other</option>
+                        <option value="Significant other">Significant other</option>
+                        <option value="Domestic partner">Domestic partner</option>
+                        <option value="Employee">Employee</option>
+                        <option value="Non-relative - other">Non-relative - other</option>
+                    </select>
+                </li>
+                <li>
+                    <span>Gender</span>
+                    <input type ="text" name="lms_driver_gender-1" id="lms_driver_gender-1" class="field"/>
+                </li>
+                <li>
+                    <span>First Name</span>
+                    <input type ="text" name="lms_driver_firstname-1" id="lms_driver_firstname-1" class="field"/>
+                </li>
+                <li>
+                    <span>Last Name</span>
+                    <input type ="text" name="lms_driver_lastname-1" id="lms_driver_lastname-1" class="field"/>
+                </li>
+                <li class="">
+                    <span>Phone</span>
+                    <input type ="text" name="lms_driver_phone-1" id="lms_driver_lastname-1" class="field"/>
+                </li>
+                <li>
+                    <span>Email</span>
+                    <input type ="text" name="lms_driver_mail-1" id="lms_driver_mail-1" class="field"/>
+                </li>
+                <li>
+                    <span>Date of Birth</span>
+                    <input type ="text" name="lms_driver_birthdate-1" id="lms_driver_birthdate-1" class="field"/>
+                </li>
+
+                <li>
+                    <span>Mariatal Status</span>
+                    <select name="lms_driver_maritalstatus-1" id="lms_driver_maritalstatus-1" class="select">
+                        <option value="21">Single</option>
+                        <option value="22">Married</option>
+                        <option value="23">Divorced</option>
+                        <option value="24">Widowed</option>
+                    </select>
+                </li>
+
+                <li>
+                    <span>State Licensed</span>
+                    <select name="lms_driver_licensed-1" name="lms_driver_licensed-1" class="select">
+                        <option value="25">AL</option><option value="26">AK</option>
+                        <option value="27">AZ</option><option value="28">AR</option>
+                        <option value="29">CA</option><option value="30">CO</option>
+                        <option value="31">CT</option><option value="81">DE</option>
+                        <option value="82">FL</option><option value="83">GA</option>
+                        <option value="84">HI</option><option value="85">ID</option>
+                        <option value="86">IL</option><option value="87">IN</option>
+                        <option value="88">IA</option><option value="89">KS</option>
+                        <option value="90">KY</option><option value="124">IA</option>
+                        <option value="125">ME</option><option value="126">MD</option>
+                        <option value="127">MA</option><option value="128">MI</option>
+                        <option value="129">MN</option><option value="130">MS</option>
+                        <option value="131">MO</option><option value="132">MT</option>
+                        <option value="133">NE</option><option value="134">  NV</option>
+                        <option value="135">NH</option><option value="136">NJ</option>
+                        <option value="137">NM</option><option selected="" value="138">NY</option>
+                        <option value="139">NC</option><option value="140">ND</option>
+                        <option value="141">OH</option><option value="142">OK</option>
+                        <option value="143">OR</option><option value="144">PA</option>
+                        <option value="145">RI</option><option value="146">SC</option>
+                        <option value="147">SD</option><option value="148">TN</option>
+                        <option value="149">TX</option><option value="150">UT</option>
+                        <option value="151">VT</option><option value="152">VA</option>
+                        <option value="153">WA</option><option value="154">WV</option>
+                        <option value="155">WI</option><option value="156">WY</option>
+                        <option value="157">PR</option>
+                    </select>
+                </li>
+
+                <li><span>Driver Experience Year Licensed</span>
+                    <select name="lms_driver_experienceyear-1" id="lms_driver_experienceyear-1" class="select">
+                            <option value="32">1</option><option value="33">2</option>
+                            <option value="34">3</option><option value="35">4</option>
+                            <option value="36">5</option><option value="37">6</option>
+                            <option value="38">7</option><option value="39">8</option>
+                            <option value="40">9</option><option value="41">10</option>
+                            <option value="91">11</option><option value="92">12</option>
+                            <option value="93">13</option><option value="94">14</option>
+                            <option value="95">15</option><option value="96">16</option>
+                            <option value="97">17</option><option value="98">18</option>
+                            <option value="99">19</option><option value="100">20+</option>
+                    </select>
+                </li>
+
+                <li><span>Driver Experience Month Licensed</span>
+                    <select name="lms_driver_experiencemonth-1" id="lms_driver_experiencemonth-1" class="select">
+                            <option value="1">1</option><option value="2">2</option>
+                            <option value="3">3</option><option value="4">4</option>
+                            <option value="5">5</option><option value="6">6</option>
+                            <option value="7">7</option><option value="8">8</option>
+                            <option value="9">9</option><option value="10">10</option>
+                            <option value="11">11</option><option value="12">12</option>
+                    </select>
+                </li>
+
+            </ul>
+
+        </div><!-- driver -->
+
+
+
+        <div id= "coverage">
+            <h2>COVERAGE</h2>
+            <ul>
+                <li>
+                    <span>Quick Select</span>
+                    <select name="quickselect" id="quickselect" class="select">
+                        <option value="45">Minimum Required Coverage</option>
+                        <option value="46">Leased Vehicle Limits</option>
+                        <option value="47">Full Coverage</option>
+                        <option value="48">Extended Full Cov.-THE WORKS!</option>
+                    </select>
+                </li>
+                <li>
+                    <span>Bodily Injury Liability</span>
+                    <select
+                    name="lms_coverage_bodily-injury-liability"
+                    id="lms_coverage_bodily-injury-liability"
+                    class="select" >
+                        <option value="51">$15,000 / $30,000 / $10,000</option>
+                        <option value="52">$15,000 / $30,000 / $10,000</option>
+                        <option value="53">$25,000 / $50,000 / $15,000</option>
+                        <option value="54">$25,000 / $50,000 / $25,000</option>
+                        <option value="55">$50,000 / $100,000 / $25,000</option>
+                        <option value="56">$50,000 / $100,000 / $50,000</option>
+                        <option value="57">$100,000 / $300,000 / $25,000</option>
+                        <option value="105">$100,000 / $300,000 / $50,000</option>
+                        <option value="106">$100,000 / $300,000 / $100,000</option>
+                        <option value="107">$250,000 / $500,000 / $100,000</option>
+                    </select>
+                </li>
+
+                <li>
+                    <span>Property Damage Liability</span>
+                    <select name="lms_coverage_property-damage-liability" id="lms_coverage_property-damage-liability"
+                    class="select">
+                        <option value="51">$15,000 / $30,000 / $10,000</option>
+                        <option value="52">$15,000 / $30,000 / $10,000</option>
+                        <option value="53">$25,000 / $50,000 / $15,000</option>
+                        <option value="54">$25,000 / $50,000 / $25,000</option>
+                        <option value="55">$50,000 / $100,000 / $25,000</option>
+                        <option value="56">$50,000 / $100,000 / $50,000</option>
+                        <option value="57">$100,000 / $300,000 / $25,000</option>
+                        <option value="105">$100,000 / $300,000 / $50,000</option>
+                        <option value="106">$100,000 / $300,000 / $100,000</option>
+                        <option value="107">$250,000 / $500,000 / $100,000</option>
+                    </select>
+                </li>
+
+                <li>
+                    <span>Uninsured Motorist Bodily Injury</span>
+                    <select name="lms_coverage_uninsured-motorist-bodily-injury" id="lms_coverage_uninsured-motorist-bodily-injury"
+                    class='select' >
+                        <option value="58">$15,000 / $30,000</option>
+                        <option value="59">$25,000 / $50,000</option>
+                        <option value="108">$30,000 / $60,000</option>
+                        <option value="109">$50,000 / $100,000</option>
+                        <option value="110">$100,000 / $300,000</option>
+                    </select>
+                </li>
+
+                <li><span>Uninsured Motorist Property Damage</span>
+                    <input type="radio" value ='1' name="lms_coverage_uninsured-motorist-property-demage"/>Yes
+                    <input type="radio" value ='0' name="lms_coverage_uninsured-motorist-property-demage"/>No
+                </li>
+                <li>
+                    <span>Medical Payments</span>
+                    <select name="lms_coverage_medical-payments" id="lms_coverage_medical-payments" class="select">
+                        <option value="60">$500</option>
+                        <option value="61">$1,000</option>
+                        <option value="111">$2,500</option>
+                        <option value="112">$5,000</option>
+                    </select>
+                </li>
+                <li>
+                    <span>Roadside Assistance Program</span>
+                    <select
+                    name="lms_coverage_roadside-assistance-program"
+                    id="lms_coverage_roadside-assistance-program" class="select">
+                        <option value="62">None</option>
+                        <option value="63">Premium</option>
+                        <option value="113">Basic</option>
+                    </select>
+                </li>
+                <h2>Physical Damage Coverage</h2><!-- cobertura de daños materiales -->
+                <li>
+                    <span>Comprehensive</span>
+                        <select
+                        name="lms_coverage_comprehensive"
+                        id="lms_coverage_comprehensive"
+                         class="select">
+                            <option value="64">No Coverage</option>
+                            <option value="65">$50</option>
+                            <option value="114">$100</option>
+                            <option value="115">$250</option>
+                            <option value="116">$500</option>
+                        </select>
+                </li>
+                <li>
+                    <span>Colission</span>
+                        <select name="lms_coverage_colission" id="lms_coverage_colission" class="select">
+                            <option value="66">No Coverage</option>
+                            <option value="67">$50</option>
+                            <option value="117">$100</option>
+                            <option value="118">$250</option>
+                            <option value="119">$500</option>
+                        </select>
+                </li>
+                <li>
+                    <span>Colission Deductible Waiver</span><!-- Colission Deducible Renuncia -->
+                    <input type='radio' name="lms_coverage_colission-deductible-waiver" value="1" class="field"/>Yes
+                    <input type='radio' name="lms_coverage_colission-deductible-waiver" value="0" class="field"/>No
+                </li>
+
+                <li>
+                    <span>Rental Reimbursement*</span><!-- Reembolso de alquiler-->
+                    <input type='radio' name="lms_coverage_rental-reimbursement" value="1" class="field"/>Yes
+                    <input type='radio' name="lms_coverage_rental-reimbursement" value="0" class="field"/>No
+                </li>
+                <li>
+                    <span>Towing</span><!-- Remolque -->
+                    <input type='radio' name="lms_coverage_towing" value="1"/>Yes
+                    <input type='radio' name="lms_coverage_towing" value="0"/>No
+                </li>
+
+
+                <h2>Current Coverages</h2>
+                <li>
+                    <span>Current Auto Insurance carrier</span><!-- Auto actual portador de Seguros -->
+                    <input name="lms_coverage_insurance-carrier" class="field"/>
+                </li>
+
+                <li>
+                    <span>Current Liability Insurance Limits</span><!-- Actuales límites de seguro de responsabilidad civil -->
+                    <select name="lms_coverage_insurance-limits" id="" class="select">
+                        <option value="68">None</option>
+                        <option value="69">$15,000 / $30,000 / $5,000</option>
+                        <option value="120">$15,000 / $30,000 / $10,000</option>
+                        <option value="121">$25,000 / $50,000 / $15,000</option>
+                        <option value="122">$25,000 / $50,000 / $25,000</option>
+                    </select>
+                </li>
+
+                <li>
+                    <span>Current Insurance Renewal Date</span><!-- Seguros Actual Fecha de renovación -->
+                    <input name="lms_coverage_insurance-renewal-date" value="" class="field"/>
+                </li>
+
+                <hr>
+                <h2>Client (Policyholder) Information</h2>
+                <li><span>First Name</span>
+                    <input name="lms_firstname" id="lms_firstname" class ="field"/>
+                </li>
+                <li><span>Last Name</span>
+                    <input name="lms_lastname" id="lms_lastname" class ="field"/>
+                </li>
+                <li><span>Street</span>
+                    <input name="lms_street" id="lms_street" class ="field"/>
+                </li>
+                <li><span>City</span>
+                    <input name="lms_city" id="lms_city" class ="field"/>
+                </li>
+                <li><span>State</span>
+                    <input name="lms_state" id="lms_state" class ="field"/>
+                </li>
+                <li><span>ZipCode</span>
+                    <input name="lms_zipcode" id="lms_zipcode" class ="field"/>
+                </li>
+                <li><span>Phone</span>
+                    <input name="lms_phone" id="lms_phone" class ="field"/>
+                </li>
+                <li><span>Email</span>
+                    <input name="lms_email" id="lms_email" class ="field"/>
+                </li>
+                <hr>
+
+            </ul>
+
+            <input type='submit' value='Enviar Datos'/>
+
+        </div>
+
+
+
+
+
+
+    </form>
+</div><!--- quote -->
+
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+    console.log("LOAD");
+
+    // ocultar todos
+    ocultarTodos = function(){
+        var $data = $('.menu-horizonal li a');
+
+        $.each($data, function(index, value) {
+            console.log(index,value);
+            //url = value.href;
+            var arreglo = value.href.split('#');
+            var id = arreglo[1];
+            $('#'+id).addClass('hidden anb');
+
+        });
+    };
+
+    ocultarTodos();
+    $('.menu-horizonal li a').click(function(event){
+        event.preventDefault();
+        console.log('hola click');
+
+        var $link = $(this);
+        var $id = $link.attr('href');
+        //ver tab
+        var elemento = $($id);
+         if ( elemento.hasClass('hidden') ){
+            ocultarTodos();
+            elemento.removeClass('hidden');
+          }
+    });
+
+
+    //--- Eliminar Elemento
+    // $("body .close").on("click", function(event){
+    //   console.log('x');
+    // });
+
+$("body").delegate(".close", "click", function() {
+  console.log('x');
+  var $elemento = $(this).parent();
+  $elemento.css('colore','red');
+  console.log($elemento);
+  $elemento.remove();
+
+});
+
+
+});
+
+//console.log("inicio");
+//console.log($("#vehicle"));
+//$("#vehicle").append("AA");
+//------------------------------------------------
+
+
+
+
+//--------------------------------------------------
+
+
+var $vehicle = $("#vehicle");
+var $driver = $('#driver');
+
+countGlobal = function(vehicle){
+        var $contador = 1;
+        var hijos = vehicle[0].children;
+
+        for(i=0;i<hijos.length;i++){
+            console.log(i);
+            console.log(hijos[i].nodeName);
+            if(hijos[i].nodeName =="UL"){
+                $contador++;
+            }
+            console.log(hijos[i].type);
+            console.log(i);
+        }
+        return $contador;
+}
+
+
+createBodyVehicle= function(){
+    var count = countGlobal($vehicle);
+    console.log(count);
+    //---- body
+    var ul = document.createElement("ul");
+    ul.setAttribute("row","vehicle-"+count);
+    ul.setAttribute("class","lista");
+    //ul.innerHtml='<li>lista</li>';
+
+    // inicio de html
+    var close,li1,li2,li3,li4,li5,li6,li7;
+
+        close = '<h2>'+count+'</h2><div class="close">X</div>';
+
+        li1 = '<li>';
+        li1 += '<span>Year</span>';
+        li1 += '<select name="lms_vehicle_year-'+count+'" id="lms_vehicle_year-'+count+'" class="select">';
+        li1 += '<option value="2012">2012</option>';
+        li1 += '<option value="2013">2013</option>';
+        li1 += '</select>';
+        li1 += '</li>';
+
+
+        li2 = '<li>';
+        li2 += '<span>Make</span>';
+        li2 += '<input type ="text" name="lms_vehicle_make-'+count+'" id="lms_vehicle_make-'+count+'" class="field"/>';
+        li2 += '</li>';
+
+        li3 = '<li>';
+        li3 += '<span>Model</span>';
+        li3 += '<input type ="text" name="lms_vehicle_model-'+count+'" id="lms_vehicle_model-'+count+'" class="field"/>';
+        li3 += '</li>';
+
+        // submodel
+        li4 = '<li>';
+        li4 += '<span>Sub Model</span>'
+        li4 += '<input type ="text" name="lms_vehicle_submodel-'+count+'" id="lms_vehicle_submodel-'+count+'" class="field"/>';
+        li4 += '</li>';
+
+        // Vehicle Use
+        li5 = '<li>';
+        li5 += '<span>Vehicle Use</span>';
+        li5 += '<select name="lms_vehicle_use-'+count+'" id="lms_vehicle_use-'+count+'" class="select" >';
+        li5 += '<option value="commute">Commute</option>';
+        li5 += '<option value="business">Business</option>';
+        li5 += '<option value="pleasure">Pleasure</option>';
+        li5 += '<option value="farming">Farming</option>';
+        li5 += '</select>';
+        li5 += '</li>';
+
+        // vehicle mileage
+        li6 = '<li>';
+        li6 += '<span>Vehicle Mileage</span>';
+        li6 += '<input type ="text" name="lms_vehicle_mileage-'+count+'" id="lms_vehicle_mileage-'+count+'" class="field"/>';
+        li6 += '</li>';
+
+        // vehhicle status
+        li7 = '<li>';
+        li7 += '<span>Vehicle Status</span>';
+        li7 += '<select name="lms_vehicle_status-'+count+'" id="lms_vehicle_status-'+count+'" class="select">';
+        li7 += '<option value="owned">Owned</option>';
+        li7 += '<option value="lease">Lease</option>';
+        li7 += '<option value="financed">Financed</option>';
+        li7 += '</select>';
+        li7 += '</li>';
+    // final de html
+    var html ='';
+    html += close;
+    html += li1;
+    html += li2;
+    html += li3;
+    html += li4;
+    html += li5;
+    html += li6;
+    html += li7;
+
+    $vehicle.append(ul); //PRINCIPAL
+    ul.innerHTML=html;
+    //$('#temporal').append(html);
+    //$('#temporal').appendTo('#vehicle');
+    //console.log(html);
+}
+
+function createVehicle(obj){
+    var data = document.frmLead.addvehicle;
+    var flag = false;
+    for(i=0;i<data.length;i++){
+        //console.log(data[i].getAttribute('selected'));
+        if(data[i].checked && data[i].value==1){
+            flag=true;
+            break;
+        }
+    }
+
+    if(flag){
+        createBodyVehicle();
+    }
+}
+
+
+//--------------------- CREATE DRIVER ------------------------
+function createDriver(obj){
+    var data = document.frmLead.adddriver;
+    var flag = false;
+    for(i=0;i<data.length;i++){
+        if(data[i].checked && data[i].value==1){ //console.log(data[i].getAttribute('selected'));
+            flag=true;
+            break;
+        }
+    }
+
+    if(flag){
+        createBodyDriver();
+    }
+}
+
+createBodyDriver= function(){
+    var count = countGlobal($driver);
+    //---- body
+    var ul = document.createElement("ul");
+    ul.setAttribute("row","driver-"+count);
+    ul.setAttribute("class","lista");
+    //ul.innerHtml='<li>lista</li>';
+
+    $('#driver').append(ul);//PRINCIPAL
+
+    // inicio de html
+    var close,li1,li2,li3,li4,li5,li6,li7;
+
+        close = '<h2>'+count+'</h2><div class="close">X</div>';
+
+        li1 = '<li>';
+        li1 += '<span>Gender</span>';
+        li1 += '<input type ="text" name="lms_driver_gender-'+count+'" id="lms_driver_gender-'+count+'" class="field"/>';
+        li1 += '</li>';
+
+        li2 = '<li>';
+        li2 += '<span>First Name</span>';
+        li2 += '<input type ="text" name="lms_driver_firstname-'+count+'" id="lms_driver_firstname-'+count+'" class="field"/>';
+        li2 += '</li>';
+
+        li3 = '<li>';
+        li3 += '<span>Last Name</span>';
+        li3 += '<input type ="text" name="lms_driver_lastname-'+count+'" id="lms_driver_lastname-'+count+'" class="field"/>';
+        li3 += '</li>';
+
+        //telefono
+        li4 = '<li class="">';
+        li4 += '<span>Phone</span>';
+        li4 += '<input type ="text" name="lms_driver_phone-'+count+'" id="lms_driver_lastname-'+count+'" class="field"/>';
+        li4 += '</li>';
+        //email
+        li5 = '<li>';
+        li5 += '<span>Email</span>';
+        li5 += '<input type ="text" name="lms_driver_mail-'+count+'" id="lms_driver_mail-'+count+'" class="field"/>';
+        li5 += '</li>';
+        // birth date
+        li6 = '<li>';
+        li6 += '<span>Date of Birth</span>';
+        li6 += '<input type ="text" name="lms_driver_birthdate-'+count+'" id="lms_driver_birthdate-'+count+'" class="field"/>';
+        li6 += '</li>';
+        // Mariatl Satatus
+        li7 = '<li>';
+        li7 += '<span>Mariatal Status</span>';
+        li7 += '<select name="lms_driver_maritalstatus-'+count+'" id="lms_driver_maritalstatus-'+count+'" class="select">';
+        li7 += '<option value="21">Single</option>';
+        li7 += '<option value="22">Married</option>';
+        li7 += '<option value="23">Divorced</option>';
+        li7 += '<option value="24">Widowed</option>';
+        li7 += '</select>';
+        li7 += '</li>';
+        // State Licensed
+        li8 = '<li>';
+        li8 += '<span>State Licensed</span>';
+        li8 += '<select name="lms_driver_licensed-'+count+'"  name="lms_driver_licensed-'+count+'" class="select">';
+        li8 += '<option value="25">AL</option><option value="26">AK</option>';
+        li8 += '<option value="27">AZ</option><option value="28">AR</option>';
+        li8 += '<option value="29">CA</option><option value="30">CO</option>';
+        li8 += '<option value="31">CT</option><option value="81">DE</option>';
+        li8 += '<option value="82">FL</option><option value="83">GA</option>';
+        li8 += '<option value="84">HI</option><option value="85">ID</option>';
+        li8 += '<option value="86">IL</option><option value="87">IN</option>';
+        li8 += '<option value="88">IA</option><option value="89">KS</option>';
+        li8 += '<option value="90">KY</option><option value="124">IA</option>';
+        li8 += '<option value="125">ME</option><option value="126">MD</option>';
+        li8 += '<option value="127">MA</option><option value="128">MI</option>';
+        li8 += '<option value="129">MN</option><option value="130">MS</option>';
+        li8 += '<option value="131">MO</option><option value="132">MT</option>';
+        li8 += '<option value="133">NE</option><option value="134">  NV</option>';
+        li8 += '<option value="135">NH</option><option value="136">NJ</option>';
+        li8 += '<option value="137">NM</option><option selected="" value="138">NY</option>';
+        li8 += '<option value="139">NC</option><option value="140">ND</option>';
+        li8 += '<option value="141">OH</option><option value="142">OK</option>';
+        li8 += '<option value="143">OR</option><option value="144">PA</option>';
+        li8 += '<option value="145">RI</option><option value="146">SC</option>';
+        li8 += '<option value="147">SD</option><option value="148">TN</option>';
+        li8 += '<option value="149">TX</option><option value="150">UT</option>';
+        li8 += '<option value="151">VT</option><option value="152">VA</option>';
+        li8 += '<option value="153">WA</option><option value="154">WV</option>';
+        li8 += '<option value="155">WI</option><option value="156">WY</option>';
+        li8 += '<option value="157">PR</option>';
+        li8 += '</select>';
+        li8 += '</li>';
+        // Drive Experience Year
+        li9 = '<li><span>Driver Experience Year Licensed</span>';
+        li9 += '<select name="lms_driver_experienceyear-'+count+'" id="lms_driver_experienceyear-'+count+'" class="select">';
+        li9 += '<option value="32">1</option><option value="33">2</option>';
+        li9 += '<option value="34">3</option><option value="35">4</option>';
+        li9 += '<option value="36">5</option><option value="37">6</option>';
+        li9 += '<option value="38">7</option><option value="39">8</option>';
+        li9+= '<option value="40">9</option><option value="41">10</option>';
+        li9+= '<option value="91">11</option><option value="92">12</option>';
+        li9 += '<option value="93">13</option><option value="94">14</option>';
+        li9 += '<option value="95">15</option><option value="96">16</option>';
+        li9 += '<option value="97">17</option><option value="98">18</option>';
+        li9 += '<option value="99">19</option><option value="100">20+</option>';
+        li9 += '</select>';
+        li9 += '</li>';
+        // Driver Experience Month
+        li10 = '<li><span>Driver Experience Month Licensed</span>';
+        li10 += '<select name="lms_driver_experiencemonth-'+count+'" id="lms_driver_experiencemonth-'+count+'" class="select">';
+        li10 += '<option value="1">1</option><option value="2">2</option>';
+        li10 += '<option value="3">3</option><option value="4">4</option>';
+        li10 += '<option value="5">5</option><option value="6">6</option>';
+        li10 += '<option value="7">7</option><option value="8">8</option>';
+        li10 += '<option value="9">9</option><option value="10">10</option>';
+        li10 += '<option value="11">11</option><option value="12">12</option>';
+        li10 += '</select>';
+        li10 += '</li>';
+
+//---
+    // final de html
+    var html ='';
+    html += close;
+    html += li1;
+    html += li2;
+    html += li3;
+    html += li4;
+    html += li5;
+    html += li6;
+    html += li7;
+    html += li8;
+    html += li9;
+    html += li10;
+
+    ul.innerHTML=html;
+    //$('#temporal').append(html);
+    //$('#temporal').appendTo('#vehicle');
+    //console.log(html);
+}
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+

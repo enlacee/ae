@@ -1,0 +1,284 @@
+<html>
+<head>
+    <title>frm</title>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+    <title>frm</title>
+
+    <!--<link rel="stylesheet" href="css/smoothness/jquery-ui-1.10.0.custom.min.css" type="text/css" />-->
+    <script type="text/javascript" src="js/jquery-1.9.0.js" ></script>
+    <!--<script type="text/javascript" src="js/jquery-ui-1.10.0.custom.min.js" ></script>-->
+<link rel="stylesheet" href="css/style.css" type="text/css" />-
+
+<style type="text/css">
+.container{
+    width: 600px;
+    height: 500px;
+    border: 1px solid red;
+}
+.private{
+    border: 1px solid green;
+    background-color:#ddee33;
+}
+.hidden{
+    display: none;
+}
+.lista{
+    border:1px solid blue;
+}
+
+
+</style>
+</head>
+<body>
+    <div id='temporal'></div>
+
+<div class ="quote">
+    <form action="hola.php" name ="frmLead" id="frmLead">
+
+        <div class="private hidden">
+            <input name="lms_ip" id="lms_ip" value="ip123456"/>
+            <br>
+            <input name="lms_idpartner" id="lms_idpartner" value="partner0"/>
+            <input name="lms_datepartner" id="lms_datepartner" value="2013-01-01 15:56:01"/>
+            <br>
+            <input name="lms_media_code" id="lms_media_code" value="FWYTX-A-GO-LP-E-00001"/>
+        </div>
+
+
+        <div id="vehicle">
+
+            <h2>VEHICLE</h2>
+            <ul row = 'vehicle-1' class='lista'>
+                <li>
+                    <span>Year</span>
+                    <select name="lms_vehicle_year-1" id="lms_vehicle_year-1" class="select">
+                        <option value="2012">2012</option>
+                        <option value="2013">2013</option>
+                    </select>
+                </li>
+
+                <li>
+                    <span>Make</span>
+                    <input type ="text" name="lms_vehicle_make-1" id="lms_vehicle_make-1" class="field"/>
+                </li>
+
+                <li>
+                    <span>Model</span>
+                    <input type ="text" name="lms_vehicle_model-1" id="lms_vehicle_model-1" class="field"/>
+                </li>
+
+                <li>
+                    <span>Sub Model</span>
+                    <input type ="text" name="lms_vehicle_submodel-1" id="lms_vehicle_submodel-1" class="field"/>
+                </li>
+
+                <li>
+                    <span>Vehicle Use</span>
+                    <select name="lms_vehicle_use-1" id="lms_vehicle_use-1" class="select" >
+                        <option value="commute">Commute</option>
+                        <option value="business">Business</option>
+                        <option value="pleasure">Pleasure</option>
+                        <option value="farming">Farming</option>
+
+                    </select>
+                </li>
+
+                <li>
+                    <span>Vehicle Mileage</span>
+                    <input type ="text" name="lms_vehicle_mileage-1" id="lms_vehicle_mileage-1" class="field"/>
+                </li>
+
+                <li>
+                    <span>Vehicle Status</span>
+                    <select name="lms_vehicle_status-1" id="lms_vehicle_status-1" class="select">
+                        <option value="owned">Owned</option>
+                        <option value="lease">Lease</option>
+                        <option value="financed">Financed</option>
+                    </select>
+
+                </li>
+
+            </ul>
+
+            <hr>
+            <p>
+                <span>Add another vehicle?</span>
+                <input name="addvehicle" type ="radio"  value="1" checked />Yes
+                <input type ="radio" name="addvehicle" value="0" />No
+            </p><!-- new vehicle -->
+            <p>
+            <input type="button" class="button" value="NEXT" id="newVehicle" style="cursor: pointer;"
+            onclick='createVehicle(this)'/>
+            </p>
+        </div><!--- vehicle -->
+
+
+
+    </form>
+</div><!--- quote -->
+
+
+<script type="text/javascript">
+/*
+$(document).ready(function(){
+    console.log("LOAD");
+});*/
+
+//console.log("inicio");
+//console.log($("#vehicle"));
+//$("#vehicle").append("AA");
+
+
+
+
+
+//------------------------------------------------
+var $vehicle = $("#vehicle");
+
+countVehicle = function(vehicle){
+        var $contador = 1;
+        var hijos = vehicle[0].children;
+
+        for(i=0;i<hijos.length;i++){
+            console.log(i);
+            console.log(hijos[i].nodeName);
+            if(hijos[i].nodeName =="UL"){
+                $contador++;
+            }
+            console.log(hijos[i].type);
+            console.log(i);
+        }
+        return $contador;
+}
+
+
+createBodyVehicle= function(){
+    var count = countVehicle($vehicle);
+    console.log(count);
+    //---- body
+    var ul = document.createElement("ul");
+    ul.setAttribute("row","vehicle-"+count);
+    ul.setAttribute("class","lista");
+
+    //ul.innerHtml='<li>lista</li>';
+
+    console.log(ul);
+    $('#vehicle').append(ul); //PRINCIPAL
+
+    // inicio de html
+    var li1,li2,li3,li4,li5,li6,li7;
+        li1 = '<li>';
+        li1 += '<span>Year</span>';
+        li1 += '<select name="lms_vehicle_year-'+count+'" id="lms_vehicle_year-'+count+'" class="select">';
+        li1 += '<option value="2012">2012</option>';
+        li1 += '<option value="2013">2013</option>';
+        li1 += '</select>';
+        li1 += '</li>';
+
+
+        li2 = '<li>';
+        li2 += '<span>Make</span>';
+        li2 += '<input type ="text" name="lms_vehicle_make-'+count+'" id="lms_vehicle_make-'+count+'" class="field"/>';
+        li2 += '</li>';
+
+        li3 = '<li>';
+        li3 += '<span>Model</span>';
+        li3 += '<input type ="text" name="lms_vehicle_model-'+count+'" id="lms_vehicle_model-'+count+'" class="field"/>';
+        li3 += '</li>';
+
+        // submodel
+        li4 = '<li>';
+        li4 += '<span>Sub Model</span>'
+        li4 += '<input type ="text" name="lms_vehicle_submodel-'+count+'" id="lms_vehicle_submodel-'+count+'" class="field"/>';
+        li4 += '</li>';
+
+        // Vehicle Use
+        li5 = '<li>';
+        li5 += '<span>Vehicle Use</span>';
+        li5 += '<select name="lms_vehicle_use-'+count+'" id="lms_vehicle_use-'+count+'" class="select" >';
+        li5 += '<option value="commute">Commute</option>';
+        li5 += '<option value="business">Business</option>';
+        li5 += '<option value="pleasure">Pleasure</option>';
+        li5 += '<option value="farming">Farming</option>';
+        li5 += '</select>';
+        li5 += '</li>';
+
+        // vehicle mileage
+        li6 = '<li>';
+        li6 += '<span>Vehicle Mileage</span>';
+        li6 += '<input type ="text" name="lms_vehicle_mileage-'+count+'" id="lms_vehicle_mileage-'+count+'" class="field"/>';
+        li6 += '</li>';
+
+        // vehhicle status
+        li7 = '<li>';
+        li7 += '<span>Vehicle Status</span>';
+        li7 += '<select name="lms_vehicle_status-'+count+'" id="lms_vehicle_status-'+count+'" class="select">';
+        li7 += '<option value="owned">Owned</option>';
+        li7 += '<option value="lease">Lease</option>';
+        li7 += '<option value="financed">Financed</option>';
+        li7 += '</select>';
+        li7 += '</li>';
+
+
+
+    // final de html
+    var html ='';
+    html += li1;
+    html += li2;
+    html += li3;
+    html += li4;
+    html += li5;
+    html += li6;
+    html += li7;
+
+
+    ul.innerHTML=html;
+    //$('#temporal').append(html);
+    //$('#temporal').appendTo('#vehicle');
+    //console.log(html);
+
+
+
+}
+
+
+
+function createVehicle(obj){
+    var data = document.frmLead.addvehicle;
+    var flag = false;
+    for(i=0;i<data.length;i++){
+        //console.log(data[i].getAttribute('selected'));
+        if(data[i].checked && data[i].value==1){
+            flag=true;
+            break;
+        }
+    }
+
+    if(flag){
+        createBodyVehicle();
+    }
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
